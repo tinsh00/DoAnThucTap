@@ -1,0 +1,120 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="style.css"> -->
+</head>
+<body>
+    <div class="main">
+        <form class="form" id="form-1">
+            <h3 class="heading">Đăng kí Giữ Xe</h3>
+            <p class="desc">Học Viện Công Nghệ Bưu Chính Viễn Thông</p>
+
+            <div class="spacer"></div>
+
+            <div class="form-group">
+                <label for="fullname" class="form-label">Tên đầy đủ</label>
+                <div>
+                    <input id="fullname" name="fullname" type="text" placeholder="VD: Mr. Huynh Trung Tru" class="form-control">
+                </div>
+                <span class="form-message"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="email" class="form-label">Email</label>
+                <input id="email" name="email" type="text" placeholder="VD: email@domain.com" class="form-control">
+                <span class="form-message"></span>
+            </div>
+            <!-- <div class="form-group">
+              <label class="form-label">Địa Chỉ</label>
+              <input  id="DiaChi" type="text" placeholder="VD: 104/1 Man Thiên" class="form-control">
+              <span class="form-message"></span>
+            </div> -->
+            <div class="form-group">
+                <label class="form-label">SDT</label>
+                <input id="SDT" type="text" placeholder="VD: 0364559837" class="form-control">
+                <span class="form-message"></span>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Ngày Sinh</label>
+                <input id="NgaySinh" type="date" name="trip-start"
+                       value="2018-07-22"
+                       min="1900-01-01" max="2021-12-31">
+                <span class="form-message"></span>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Chọn Giới Tính</label>
+                <select id="GioiTinh" name="province" class="form-control">
+                    <option value="">--Chọn giới tính--</option>
+                    <option value="Nam">Nam</option>
+                    <option value="Nu">Nữ</option>
+                    <option value="Khac">Khác</option>
+                </select>
+                <span class="form-message"></span>
+            </div>
+            <button class="form-submit" onclick="UserAction()">Đăng ký</button>
+        </form>
+
+    </div>
+</body>
+<!-- <script src="main.js"></script> -->
+<script>
+    function UserAction(){
+          alert("cak");
+          // var xhttp = new XMLHttpRequest();
+          //     xhttp.onreadystatechange = function() {
+          //   if (this.readyState == 4 && this.status == 200) {
+          //      alert(this.responseText);
+          //     }
+          // };
+           var ten = document.querySelector('#fullname').value;
+           var email = document.querySelector('#email').value;
+           //var  dc= document.querySelector('#DiaChi').value;
+           var Ngay = document.querySelector('#NgaySinh').value;
+           var sdt = document.querySelector('#SDT').value;
+           var Gioi = document.querySelector('#GioiTinh').value;
+
+           var json = JSON.stringify({
+              HoTen : ten,
+              GioiTinh : Gioi,
+              NgaySinh : Ngay,
+              SDT : sdt,
+              Email : email,
+              NgayDK : Date.now,
+              TrangThai : 1
+           })
+           alert(json);
+           console.log(json);
+            // xhttp.open("POST", "http://127.0.0.1:5000/api/postUser", true);
+            // xhttp.setRequestHeader("Content-type", "application/json");
+
+
+            // xhttp.send(json);
+          //dùng call API
+
+        }
+    //mong muốn của chúng ta
+    // Validator({
+    //     form:'#form-1',
+    //     formGroupSelector:'.form-group',
+    //     errorSelector:'.form-message',
+    //     rule:[
+    //         Validator.isRequired('#fullname'),
+    //         Validator.isRequired('#email'),
+    //         Validator.isRequired('#avatar'),
+    //         Validator.isRequired('#province'),
+    //         Validator.isEmail('#email'),
+    //         Validator.isRequired('input[name="gender"]'),
+    //         Validator.isMinLengh('#password',6),
+    //         Validator.isConfirmed('#password_confirmation',function(){
+    //             return document.querySelector('#form-1 #password').value;
+    //         },"password nhập lại không đúng")
+    //     ],
+    //     //onSubmit :
+    // });
+</script>
+</html>
